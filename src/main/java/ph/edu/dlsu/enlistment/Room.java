@@ -9,12 +9,10 @@ import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
 class Room {
     private final String roomName;
     private final int capacity;
-    private int currEnlisted = 0;
+//    private int currEnlisted = 0;
 
     Room (String roomName, int capacity){
         Objects.requireNonNull(roomName);
-
-
         Validate.isTrue(isAlphanumeric(roomName), "roomName must be alphanumeric, was: "
                 + roomName);
         Validate.isTrue(capacity > 0, "capacity must be greater than zero, was: "
@@ -23,22 +21,25 @@ class Room {
         this.capacity = capacity;
     }
 
-    boolean isVacant(){
-        return currEnlisted < capacity;
-    }
-
-    void addStudent() {
-        if(!isVacant()) {
-            throw new IllegalStateException("Room capacity is already full for room " + roomName);
-        }
-        currEnlisted++;
-    }
-
-    void removeStudent() {
-        if (currEnlisted > 0) {
-            currEnlisted--;
+    void isVacant(int currEnlisted){
+        if(currEnlisted >= capacity){
+            throw new RoomCapacityExceededException("Room has max capacity of " + capacity +
+                    " students, but received " + currEnlisted + " people");
         }
     }
+
+//    void addStudent() {
+//        if(!isVacant()) {
+//            throw new IllegalStateException("Room capacity is already full for room " + roomName);
+//        }
+//        currEnlisted++;
+//    }
+//
+//    void removeStudent() {
+//        if (currEnlisted > 0) {
+//            currEnlisted--;
+//        }
+//    }
 
     @Override
     public String toString(){

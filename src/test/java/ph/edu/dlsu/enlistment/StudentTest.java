@@ -115,5 +115,38 @@ class StudentTest {
 
     }
 
+    @Test
+    void subject_not_same(){
+        //
+        Student student1 = newStudent();
+
+        //
+        Room room = new Room("Room1", 1);
+
+        //
+        Subject subject1 = new Subject("CS101", 3.0, false, new Collections.emptyList())
+
+        //
+        Subject subject2 = new Subject("MTH101", 3.0, false, new Collections.emptyList())
+
+        //
+        Section section1 = new Section("A", MTH_H0830, room, subject1);
+
+        //
+        Section section2 = new Section("B", new Schedule(TF, H0830), room, subject2);
+
+        //
+        student1.enlist(section1);
+
+        //
+        student1.enlist(section2);
+
+        //
+        assertFalse(student1.getSections().isEmpty());
+
+        // check for subject conflict
+
+
+    }
 
 }
