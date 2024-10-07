@@ -9,7 +9,6 @@ import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
 class Room {
     private final String roomName;
     private final int capacity;
-//    private int currEnlisted = 0;
 
     Room (String roomName, int capacity){
         Objects.requireNonNull(roomName);
@@ -27,19 +26,6 @@ class Room {
                     " students, but received " + currEnlisted + " people");
         }
     }
-
-//    void addStudent() {
-//        if(!isVacant()) {
-//            throw new IllegalStateException("Room capacity is already full for room " + roomName);
-//        }
-//        currEnlisted++;
-//    }
-//
-//    void removeStudent() {
-//        if (currEnlisted > 0) {
-//            currEnlisted--;
-//        }
-//    }
 
     @Override
     public String toString(){

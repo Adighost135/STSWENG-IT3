@@ -124,10 +124,10 @@ class StudentTest {
         Room room = new Room("Room1", 1);
 
         //
-        Subject subject1 = new Subject("CS101", 3.0, false, new Collections.emptyList())
+        Subject subject1 = new Subject("CS101", 3.0, false, Collections.emptyList());
 
         //
-        Subject subject2 = new Subject("MTH101", 3.0, false, new Collections.emptyList())
+        Subject subject2 = new Subject("MTH101", 3.0, false, Collections.emptyList());
 
         //
         Section section1 = new Section("A", MTH_H0830, room, subject1);
@@ -145,6 +145,35 @@ class StudentTest {
         assertFalse(student1.getSections().isEmpty());
 
         // check for subject conflict
+
+
+    }
+
+    @Test
+    void subject_same(){
+        //
+        Student student1 = newStudent();
+
+        //
+        Room room = new Room("Room1", 1);
+
+        //
+        Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
+
+        //
+        Subject subject2 = new Subject("CS101", 3, false, Collections.emptyList());
+
+        //
+        Section section1 = new Section("A", MTH_H0830, room, subject1);
+
+        //
+        Section section2 = new Section("B", new Schedule(TF, H0830), room, subject2);
+
+        //
+        student1.enlist(section1);
+
+        // check for subject conflict
+        assertThrows(SubjectConflictException.class, () -> student1.enlist(section2));
 
 
     }

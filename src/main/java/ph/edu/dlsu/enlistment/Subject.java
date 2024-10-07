@@ -1,25 +1,28 @@
 package ph.edu.dlsu.enlistment;
 
+import org.apache.commons.lang3.*;
+import static org.apache.commons.lang3.StringUtils.*;
+
 import java.util.*;
 
 class Subject {
     private final String subjectId;
     private final float units;
     private final boolean isLaboratory;
-    private final Collection<Subject> prerequisites;
+    private final Collection<Subject> prerequisites = new HashSet<>();
 
     Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites){
         Objects.requireNonNull(subjectId);
         Objects.requireNonNull(units);
         Objects.requireNonNull(isLaboratory);
-        Validate.isTrue.isAlphanumeric(subjectId, "subjectId must be alphanumeric, was: " +subjectId);
+        Validate.isTrue(isAlphanumeric(subjectId), "subjectId must be alphanumeric, was: " +subjectId);
         if (units < 0 || units > 4) {
             throw new IllegalStateException("Units can't be negative or above 4. was: " + units);
         }
         this.subjectId = subjectId;
         this.units = units;
         this.isLaboratory = isLaboratory;
-        this.prerequisites = new Collection<> prerequisites;
+        this.prerequisites.addAll(prerequisites);
     }
 
 
