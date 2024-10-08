@@ -13,8 +13,17 @@ class StudentTest {
     final static Schedule MTH_H0830 = new Schedule(MTH, H0830);
 
     static Student newStudent(){
-        return new Student(1, Collections.emptyList());
+        return new Student(1, Collections.emptyList(), Collections.emptyList());
     }
+
+    final static Subject MTH101 = new Subject("MTH101", 3, false, Arrays.asList());
+    final static Subject PHYSICS = new Subject("PHYSICS", 3, true, Arrays.asList(MTH101));
+    final static Subject CSSWENG = new Subject("CSSWENG", 3, false, Arrays.asList());
+    final static Subject STSWENG = new Subject("STSWENG", 3, false, Arrays.asList(CSSWENG));
+    final static Subject LBYARCH = new Subject("LBYARCH", 1, true, Arrays.asList());
+
+    static Subject[] completedSubjects = new Subject[]{MTH101, PHYSICS, CSSWENG, LBYARCH};
+
 
     // main line of logic (happy path)
     @Test
@@ -124,10 +133,10 @@ class StudentTest {
         Room room = new Room("Room1", 1);
 
         //
-        Subject subject1 = new Subject("CS101", 3.0, false, Collections.emptyList());
+        Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
 
         //
-        Subject subject2 = new Subject("MTH101", 3.0, false, Collections.emptyList());
+        Subject subject2 = new Subject("MTH101", 3, false, Collections.emptyList());
 
         //
         Section section1 = new Section("A", MTH_H0830, room, subject1);
@@ -174,8 +183,49 @@ class StudentTest {
 
         // check for subject conflict
         assertThrows(SubjectConflictException.class, () -> student1.enlist(section2));
+    }
+    @Test
+    void taken_prerequisite_subjects(){
+        //
+        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects));
 
+        // check if student1 has the completed subjects
+        var subject_student1 = student1.getCompletedSubjects();
+        assertEquals(4, subject_student1.size());
 
+        //
+        Room room = new Room("Room1", 1);
+
+        //
+        Subject subject1 = new Subject("STSWENG", 3, false, List.of(CSSWENG));
+
+        //
+        Section section1 = new Section("A", MTH_H0830, room, subject1);
+
+        //
+        student1.enlist(section1);
+    }
+
+    @Test
+    void has_not_taken_prerequisite_subjects(){
+        //
+        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects));
+
+        // check if student1 has the completed subjects
+        var subject_student1 = student1.getCompletedSubjects();
+        assertEquals(4, subject_student1.size());
+
+        //
+        Room room = new Room("Room1", 1);
+
+        //
+        Subject subject1 = new Subject("CS301", 3, false, List.of(STSWENG));
+
+        //
+        Section section1 = new Section("A", MTH_H0830, room, subject1);
+
+        //
+        student1.enlist(section1);
     }
 
 }
