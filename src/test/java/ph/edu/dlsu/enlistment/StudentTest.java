@@ -12,6 +12,8 @@ class StudentTest {
 
     final static Schedule MTH_H0830 = new Schedule(MTH, H0830);
 
+    final static Subject CSMATH = new Subject("CSMATH", 3, false, Collections.emptyList());
+
     static Student newStudent(){
         return new Student(1, Collections.emptyList());
     }
@@ -24,8 +26,8 @@ class StudentTest {
         // room is not max capacity
         Room room = new Room("Room1", 2);
         // and two section with no conflict
-        Section sec1 = new Section("A", MTH_H0830, room); // Schedule(days, period)
-        Section sec2 = new Section("B", new Schedule(TF, H0830), room);
+        Section sec1 = new Section("A", MTH_H0830, room, CSMATH); // Schedule(days, period)
+        Section sec2 = new Section("B", new Schedule(TF, H0830), room, new Subject("STMATH", 3, false, Collections.emptyList()));
         // When the student enlists in both
         student.enlist(sec1);
         student.enlist(sec2);
@@ -45,10 +47,9 @@ class StudentTest {
 
         // room is not max capacity
         Room room = new Room("Room1", 2);
-
         // and two sections with the same schedule
-        Section sec1 = new Section("A", MTH_H0830, room);
-        Section sec2 = new Section("B", MTH_H0830, room);
+        Section sec1 = new Section("A", MTH_H0830, room, CSMATH);
+        Section sec2 = new Section("B", MTH_H0830, room, new Subject("STMATH", 3, false, Collections.emptyList()));
 
         // When the student enlist in both,
         student.enlist(sec1);
@@ -67,12 +68,13 @@ class StudentTest {
         Room room = new Room("Room1", 1);
 
         // and two sections with the same schedule
-        Section section = new Section("A", MTH_H0830, room);
+        Section section = new Section("A", MTH_H0830, room, CSMATH);
+
 
         // When the student enlist in both,
         student1.enlist(section);
         // then an exception is thrown at the 2nd enlistment
-        assertThrows(IllegalStateException.class, () -> student2.enlist(section));
+        assertThrows(RoomCapacityExceededException.class, () -> student2.enlist(section));
     }
 
     @Test
@@ -85,7 +87,7 @@ class StudentTest {
         Room room = new Room("Room1", 1);
 
         // and two sections with the same schedule
-        Section section = new Section("A", MTH_H0830, room);
+        Section section = new Section("A", MTH_H0830, room, CSMATH);
 
         // student1 enlist in section A,
         student1.enlist(section);
@@ -124,10 +126,10 @@ class StudentTest {
         Room room = new Room("Room1", 1);
 
         //
-        Subject subject1 = new Subject("CS101", 3.0, false, Collections.emptyList());
+        Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
 
         //
-        Subject subject2 = new Subject("MTH101", 3.0, false, Collections.emptyList());
+        Subject subject2 = new Subject("MTH101", 3, false, Collections.emptyList());
 
         //
         Section section1 = new Section("A", MTH_H0830, room, subject1);
@@ -135,18 +137,14 @@ class StudentTest {
         //
         Section section2 = new Section("B", new Schedule(TF, H0830), room, subject2);
 
-        //
+        //student1 enlist in section A
         student1.enlist(section1);
 
-        //
+        //student1 enlist in section B
         student1.enlist(section2);
 
-        //
+        //check if the student1 successfully enlist on the section
         assertFalse(student1.getSections().isEmpty());
-
-        // check for subject conflict
-
-
     }
 
     @Test
@@ -161,21 +159,48 @@ class StudentTest {
         Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
 
         //
-        Subject subject2 = new Subject("CS101", 3, false, Collections.emptyList());
-
-        //
         Section section1 = new Section("A", MTH_H0830, room, subject1);
 
         //
-        Section section2 = new Section("B", new Schedule(TF, H0830), room, subject2);
+        Section section2 = new Section("B", new Schedule(TF, H0830), room, subject1);
 
-        //
+        //student1 enlist in section A
         student1.enlist(section1);
 
         // check for subject conflict
         assertThrows(SubjectConflictException.class, () -> student1.enlist(section2));
 
+    }
 
+    @Test
+    void enlist_without_complete_subject_prerequisite_room_capacity_not_exceeded(){
+        // Given a student and a subject with a prerequisite
+        Student student = newStudent();
+
+        // room is not max capacity
+        Room room = new Room("Room1", 2);
+        //
+        Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
+        Subject subject2 = new Subject("CS102", 3, false, Arrays.asList(subject1));
+        Section sec2 = new Section("B", new Schedule(TF, H0830), room, subject2);
+
+        //--pseudocode--
+        //student enlists section with prereq
+        //student has not taken prereq subj
+        //can be new exception or make the func return boolean:
+        //assertFalse(student.enlist(sec2));
+        //assertThrows()
+
+
+        //sample collections (need to be in right classes)
+        Collection<Subject> takenSubjs = new HashSet<>();
+        takenSubjs.add(subject1);
+        Collection<Subject> didNotCompleteSubjs = new HashSet<>();
+
+        //student has taken the prequisite
+        assertTrue(subject2.checkPrerequisites(takenSubjs));
+        // student has not taken the prerequisite subject
+        assertFalse(subject2.checkPrerequisites(didNotCompleteSubjs));
     }
 
 }
