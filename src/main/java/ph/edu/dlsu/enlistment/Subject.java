@@ -14,8 +14,8 @@ class Subject {
 
     Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites){
         Objects.requireNonNull(subjectId);
-//        Objects.requireNonNull(units);
-//        Objects.requireNonNull(isLaboratory);
+        // Objects.requireNonNull(units);
+        // Objects.requireNonNull(isLaboratory);
         Validate.isTrue(isAlphanumeric(subjectId), "subjectId must be alphanumeric, was: " +subjectId);
         if (units < 0 || units > 4) {
             throw new IllegalStateException("Units can't be negative or above 4. was: " + units);
@@ -68,5 +68,9 @@ class Subject {
     @Override
     public int hashCode() {
         return Objects.hash(subjectId);
+    }
+
+    public float getUnits() {
+        return units;
     }
 }
