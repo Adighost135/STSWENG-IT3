@@ -228,4 +228,26 @@ class StudentTest {
         student1.enlist(section1);
     }
 
+
+    @Test
+    void taking_subject_outside_degree_program(){
+        Collection<Subject> degreeProgram = new HashSet<>();
+        degreeProgram.add(STSWENG);
+        degreeProgram.add(CSSWENG);
+        degreeProgram.add(LBYARCH);
+
+        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects), degreeProgram);
+
+        Room room = new Room("Room1", 2);
+
+        Section section1 = new Section("A", MTH_H0830, room, PHYSICS);
+
+        try {
+            student1.enlist(section1);
+        } catch (IllegalArgumentException ex) {
+            assertEquals("cannot enlist in section outside degree program: A", ex.getMessage());
+        }
+
+    }
+
 }
