@@ -11,11 +11,9 @@ class Student {
     private final Collection<Section> sections = new HashSet<>();
     private final Collection<Subject> completedSubjects = new HashSet<>();
     private final int maxUnits = 24;
+    private final Programs degreeProgram;
 
-//    private static final int MIN_SECTIONS = 3;
-//    private static final int MAX_SECTIONS = 7;
-
-    Student(int studentNo, Collection<Section> sections, Collection<Subject> completedSubjects) {
+    Student(int studentNo, Collection<Section> sections, Collection<Subject> completedSubjects, Programs degreeProgram) {
         isTrue(studentNo >= 0, "studentNo must be non-negative; was " + studentNo);
         Objects.requireNonNull(sections);
         Objects.requireNonNull(completedSubjects);
@@ -23,6 +21,7 @@ class Student {
         this.sections.addAll(sections);
 
         this.completedSubjects.addAll(completedSubjects);
+        this.degreeProgram = degreeProgram;
     }
 
     void enlist(Section newSection) {
@@ -36,15 +35,13 @@ class Student {
         }
         sections.forEach(currSection -> currSection.checkConflict(newSection));
         sections.forEach(currSection -> currSection.getSubject().checkPrerequisites(completedSubjects));
-        newSection.enlistStudent(); // check the room capacity
 
-        // isTrue(sections.size() < MAX_SECTIONS,
-        // "Student cannot enlist in more than " + MAX_SECTIONS + " sections");
+        newSection.enlistStudent(); // check the room capacity
+        isTrue(newSection.getSubject().checkDegreeProgram(degreeProgram), "cannot enlist in section outside degree program: " + newSection.toString());
         sections.add(newSection);
     }
 
-    // boolean canEnlist(Subject)
-
+  
     void cancelEnlist(Section cancelSection){
         Objects.requireNonNull(cancelSection);
         if(!sections.contains(cancelSection)){

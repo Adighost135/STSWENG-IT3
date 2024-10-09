@@ -10,9 +10,10 @@ class Subject {
     private final float units;
     private final boolean isLaboratory;
     private final Collection<Subject> prerequisites = new HashSet<>();
+    private final Programs degreeProgram;
 
 
-    Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites){
+    Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites, Programs degreeProgram){
         Objects.requireNonNull(subjectId);
         // Objects.requireNonNull(units);
         // Objects.requireNonNull(isLaboratory);
@@ -24,6 +25,7 @@ class Subject {
         this.units = units;
         this.isLaboratory = isLaboratory;
         this.prerequisites.addAll(prerequisites);
+        this.degreeProgram = degreeProgram;
     }
 
 
@@ -40,17 +42,6 @@ class Subject {
             }
         }
     }
-
-
-//    void checkPrerequisites(Collection<Subject> takenSubjects) {
-//        for (Subject prerequisite : prerequisites) {
-//            if (!takenSubjects.contains(prerequisite)) {
-//                throw new IllegalArgumentException("Student has not yet taken the prerequisite of " +
-//                        "subject only taken subjects: " + takenSubjects + ". Required Prerequisite " +
-//                        "subject/s: " + prerequisites);
-//            }
-//        }
-//    }
 
     @Override
     public String toString() {
@@ -70,7 +61,11 @@ class Subject {
         return Objects.hash(subjectId);
     }
 
+
     public float getUnits() {
         return units;
+
+    public boolean checkDegreeProgram(Programs program){
+        return degreeProgram == program;
     }
 }
