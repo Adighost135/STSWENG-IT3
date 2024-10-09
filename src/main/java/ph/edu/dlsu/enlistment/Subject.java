@@ -10,9 +10,10 @@ class Subject {
     private final float units;
     private final boolean isLaboratory;
     private final Collection<Subject> prerequisites = new HashSet<>();
+    private final Programs degreeProgram;
 
 
-    Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites){
+    Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites, Programs degreeProgram){
         Objects.requireNonNull(subjectId);
 //        Objects.requireNonNull(units);
 //        Objects.requireNonNull(isLaboratory);
@@ -24,6 +25,7 @@ class Subject {
         this.units = units;
         this.isLaboratory = isLaboratory;
         this.prerequisites.addAll(prerequisites);
+        this.degreeProgram = degreeProgram;
     }
 
 
@@ -68,5 +70,10 @@ class Subject {
     @Override
     public int hashCode() {
         return Objects.hash(subjectId);
+    }
+
+
+    public boolean checkDegreeProgram(Programs program){
+        return degreeProgram == program;
     }
 }

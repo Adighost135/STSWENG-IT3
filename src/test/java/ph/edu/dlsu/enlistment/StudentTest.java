@@ -13,14 +13,14 @@ class StudentTest {
     final static Schedule MTH_H0830 = new Schedule(MTH, H0830);
 
     static Student newStudent(){
-        return new Student(1, Collections.emptyList(), Collections.emptyList());
+        return new Student(1, Collections.emptyList(), Collections.emptyList(), Programs.BSCS);
     }
 
-    final static Subject MTH101 = new Subject("MTH101", 3, false, Arrays.asList());
-    final static Subject PHYSICS = new Subject("PHYSICS", 3, true, Arrays.asList(MTH101));
-    final static Subject CSSWENG = new Subject("CSSWENG", 3, false, Arrays.asList());
-    final static Subject STSWENG = new Subject("STSWENG", 3, false, Arrays.asList(CSSWENG));
-    final static Subject LBYARCH = new Subject("LBYARCH", 1, true, Arrays.asList());
+    final static Subject MTH101 = new Subject("MTH101", 3, false, Arrays.asList(), Programs.BSCS);
+    final static Subject PHYSICS = new Subject("PHYSICS", 3, true, Arrays.asList(MTH101), Programs.BSEC);
+    final static Subject CSSWENG = new Subject("CSSWENG", 3, false, Arrays.asList(), Programs.BSCS);
+    final static Subject STSWENG = new Subject("STSWENG", 3, false, Arrays.asList(CSSWENG), Programs.BSCS);
+    final static Subject LBYARCH = new Subject("LBYARCH", 1, true, Arrays.asList(), Programs.BSCS);
 
     static Subject[] completedSubjects = new Subject[]{MTH101, PHYSICS, CSSWENG, LBYARCH};
 
@@ -231,12 +231,8 @@ class StudentTest {
 
     @Test
     void taking_subject_outside_degree_program(){
-        Collection<Subject> degreeProgram = new HashSet<>();
-        degreeProgram.add(STSWENG);
-        degreeProgram.add(CSSWENG);
-        degreeProgram.add(LBYARCH);
 
-        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects), degreeProgram);
+        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects), Programs.BSCS);
 
         Room room = new Room("Room1", 2);
 
