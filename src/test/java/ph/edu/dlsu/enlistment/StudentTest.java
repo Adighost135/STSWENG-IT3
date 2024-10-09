@@ -126,106 +126,85 @@ class StudentTest {
 
     @Test
     void subject_not_same(){
-        //
+        // Given a student with no enlistment and no completed subjects
         Student student1 = newStudent();
 
-        //
+        // Given a room with normal capacity
         Room room = new Room("Room1", 1);
 
-        //
+        // Given two different subjects with no laboratory and no prerequisite
         Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
-
-        //
         Subject subject2 = new Subject("MTH101", 3, false, Collections.emptyList());
 
-        //
+        // Given two different sections with different schedule and different subjects
         Section section1 = new Section("A", MTH_H0830, room, subject1);
-
-        //
         Section section2 = new Section("B", new Schedule(TF, H0830), room, subject2);
 
-        //
+        // When  student enlists in both sections with different subjects
+        // Then no issue
         student1.enlist(section1);
-
-        //
         student1.enlist(section2);
-
-        //
-        assertFalse(student1.getSections().isEmpty());
-
-        // check for subject conflict
-
-
     }
 
     @Test
     void subject_same(){
-        //
+        // Given a student with no enlistments and no completed subjects
         Student student1 = newStudent();
 
-        //
+        // Given a room capacity is normal
         Room room = new Room("Room1", 1);
 
-        //
+        // Given two same subjects with no prerequisite and no laboratory
         Subject subject1 = new Subject("CS101", 3, false, Collections.emptyList());
-
-        //
         Subject subject2 = new Subject("CS101", 3, false, Collections.emptyList());
 
-        //
+        // Given two sections with different schedules and same subjects
         Section section1 = new Section("A", MTH_H0830, room, subject1);
-
-        //
         Section section2 = new Section("B", new Schedule(TF, H0830), room, subject2);
 
-        //
+        // When the student enlist in both subjects
         student1.enlist(section1);
 
-        // check for subject conflict
+        // then an exception is thrown at the 2nd enlistment
         assertThrows(SubjectConflictException.class, () -> student1.enlist(section2));
     }
     @Test
     void taken_prerequisite_subjects(){
-        //
+        // Given a student with completed subjects but no current enlisted sections yet
         Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects));
 
-        // check if student1 has the completed subjects
-        var subject_student1 = student1.getCompletedSubjects();
-        assertEquals(4, subject_student1.size());
-
-        //
+        // Given a room capacity normal
         Room room = new Room("Room1", 1);
 
-        //
+        // Given a subject with a prerequisite
         Subject subject1 = new Subject("STSWENG", 3, false, List.of(CSSWENG));
 
-        //
+        // Given a section with a subject that has a prerequisite
         Section section1 = new Section("A", MTH_H0830, room, subject1);
 
-        //
+        // When student enlist with the prerequisite subject
         student1.enlist(section1);
     }
 
     @Test
     void has_not_taken_prerequisite_subjects(){
-        //
+        // Given a student with completed subjects but no current enlisted sections yet
         Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects));
 
-        // check if student1 has the completed subjects
-        var subject_student1 = student1.getCompletedSubjects();
-        assertEquals(4, subject_student1.size());
-
-        //
+        // Given a room capacity normal
         Room room = new Room("Room1", 1);
 
-        //
+        // Given a subject with a prerequisite
         Subject subject1 = new Subject("CS301", 3, false, List.of(STSWENG));
 
-        //
+        // Given a section with a subject that has a prerequisite
         Section section1 = new Section("A", MTH_H0830, room, subject1);
 
-        //
-        student1.enlist(section1);
+        // When student enlist with no prerequisite subject,
+        // Then an exception is thrown
+        assertThrows(NoPrerequisiteException.class, () -> student1.enlist(section1));
     }
+
+
 
 }

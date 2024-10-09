@@ -26,16 +26,9 @@ class Student {
 
     void enlist(Section newSection) {
         Objects.requireNonNull(newSection);
-        // isTrue(!sections.contains(section), "cannot enlist in same section: " + section);
-//         if(newSection.subject)
         sections.forEach(currSection -> currSection.checkConflict(newSection));
-        sections.forEach(currSection -> currSection.getSubject().checkPrerequisites(completedSubjects));
+        newSection.getSubject().checkPrerequisites(completedSubjects);
         newSection.enlistStudent(); // check the room capacity
-
-
-//        isTrue(sections.size() < MAX_SECTIONS,
-//                "Student cannot enlist in more than " + MAX_SECTIONS + " sections");
-
         sections.add(newSection);
     }
 
