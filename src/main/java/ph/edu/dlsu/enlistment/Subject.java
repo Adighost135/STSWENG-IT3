@@ -7,18 +7,19 @@ import java.util.*;
 
 class Subject {
     private final String subjectId;
-    private final float units;
+    private final int units;
     private final boolean isLaboratory;
     private final Collection<Subject> prerequisites = new HashSet<>();
 
 
-    Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites){
+    Subject(String subjectId, int units, boolean isLaboratory, Collection<Subject> prerequisites){
         Objects.requireNonNull(subjectId);
 //        Objects.requireNonNull(units);
 //        Objects.requireNonNull(isLaboratory);
         Validate.isTrue(isAlphanumeric(subjectId), "subjectId must be alphanumeric, was: " +subjectId);
         if (units < 0 || units > 4) {
-            throw new IllegalStateException("Units can't be negative or above 4. was: " + units);
+            throw new IllegalStateException("Units can only be a whole number and must not be" +
+                    " negative or above 4. was: " + units);
         }
         this.subjectId = subjectId;
         this.units = units;
@@ -51,6 +52,14 @@ class Subject {
 //            }
 //        }
 //    }
+
+    int getUnits(){
+        return units;
+    }
+
+    boolean isLaboratory(){
+        return isLaboratory;
+    }
 
     @Override
     public String toString() {

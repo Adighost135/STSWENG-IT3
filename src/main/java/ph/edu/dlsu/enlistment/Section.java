@@ -52,6 +52,7 @@ class Section {
     Subject getSubject(){
         return subject;
     }
+
     void enlistStudent(){
         room.isVacant(currEnlisted);
 //        subject.checkPrerequisites(subject);
