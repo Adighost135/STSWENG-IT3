@@ -26,15 +26,13 @@ class Student {
 
     void enlist(Section newSection) {
         Objects.requireNonNull(newSection);
-        // isTrue(!sections.contains(section), "cannot enlist in same section: " + section);
-        // if(newSection.subject)
         Collection<Section> tempSections = new HashSet<>(sections);
         int totalUnits = tempSections.stream().mapToInt(section -> (int)section.getSubject().getUnits()).sum();
         if (totalUnits + newSection.getSubject().getUnits() > maxUnits) {
             throw new IllegalStateException("Cannot enlist in more than " + maxUnits + " units");
         }
         sections.forEach(currSection -> currSection.checkConflict(newSection));
-        sections.forEach(currSection -> currSection.getSubject().checkPrerequisites(completedSubjects));
+        newSection.getSubject().checkPrerequisites(completedSubjects);
 
         newSection.enlistStudent(); // check the room capacity
         isTrue(newSection.getSubject().checkDegreeProgram(degreeProgram), "cannot enlist in section outside degree program: " + newSection.toString());

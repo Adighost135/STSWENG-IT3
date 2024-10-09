@@ -38,7 +38,9 @@ class Subject {
     void checkPrerequisites(Collection<Subject> takenSubjects) {
         for (Subject prerequisite : prerequisites) {
             if (!takenSubjects.contains(prerequisite)) {
-                throw new IllegalStateException("prequisites not taken");
+                throw new NoPrerequisiteException("Student has not yet taken the prerequisite of " +
+                        "subject only taken subjects: " + takenSubjects + ". Required Prerequisite " +
+                        "subject/s: " + prerequisites);
             }
         }
     }
