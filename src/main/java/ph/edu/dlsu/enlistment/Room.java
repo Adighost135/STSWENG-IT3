@@ -2,6 +2,8 @@ package ph.edu.dlsu.enlistment;
 
 import org.apache.commons.lang3.Validate;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
@@ -9,6 +11,7 @@ import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
 class Room {
     private final String roomName;
     private final int capacity;
+    private final Collection<Section> assignedSections = new HashSet<>();
 
     Room (String roomName, int capacity){
         Objects.requireNonNull(roomName);
@@ -25,6 +28,19 @@ class Room {
             throw new RoomCapacityExceededException("Room has max capacity of " + capacity +
                     " students, but received " + currEnlisted + " people");
         }
+    }
+
+    void assignSection(Section newSection) {
+        Objects.requireNonNull(newSection, "Section cannot be null");
+        // Check for schedule conflicts with already assigned sections
+        for (Section existingSection : assignedSections) {
+            if (existingSection.getSchedule().equals(newSection.getSchedule())) {
+                throw new IllegalStateException("Cannot assign section " + newSection + " to room " + roomName +
+                        " as the schedule conflicts with section " + existingSection);
+            }
+        }
+        // If no conflicts, add the section
+        assignedSections.add(newSection);
     }
 
     @Override
@@ -45,3 +61,5 @@ class Room {
         return Objects.hashCode(roomName);
     }
 }
+
+
