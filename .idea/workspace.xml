@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dcc64b47-39d5-48f5-adea-a4247ec170e4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Section.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Subject.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="STSWENG-IT3" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "NatsokoMiruku"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Adighost135/STSWENG-IT3.git&quot;,
+    &quot;accountId&quot;: &quot;f0a8a75f-d646-4a7d-aa19-2b5b8c816b2a&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2nBehgddbpMYu0KE7pOL31ttPhb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.StudentTest.cancel_enlisted_section.executor": "Run",
+    "Gradle.StudentTest.enlist_with_no_conflict_room_capacity_not_exceeded.executor": "Run",
+    "Gradle.StudentTest.enlist_with_room_capacity_exceeded.executor": "Run",
+    "Gradle.StudentTest.enlist_with_schedule_conflict_room_capacity_not_exceeded.executor": "Run",
+    "Gradle.StudentTest.enlist_with_subject_prerequisite_room_capacity_not_exceeded.executor": "Run",
+    "Gradle.StudentTest.enlist_without_complete_subject_prerequisite_room_capacity_not_exceeded.executor": "Run",
+    "Gradle.StudentTest.subject_not_same.executor": "Run",
+    "Gradle.StudentTest.subject_same.executor": "Run",
+    "JUnit.StudentTest.change_section_room.executor": "Run",
+    "JUnit.StudentTest.change_section_room_with_conflict.executor": "Run",
+    "JUnit.StudentTest.enlist_more_than_24_units.executor": "Run",
+    "JUnit.StudentTest.executor": "Run",
+    "JUnit.StudentTest.schedule_conflict_of_section_in_a_room.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.StudentTest.change_section_room_with_conflict">
+    <configuration name="StudentTest.enlist_without_complete_subject_prerequisite_room_capacity_not_exceeded" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ph.edu.dlsu.enlistment.StudentTest.enlist_without_complete_subject_prerequisite_room_capacity_not_exceeded&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="StudentTest.change_section_room" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="STSWENG-IT3.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ph.edu.dlsu.enlistment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ph.edu.dlsu.enlistment" />
+      <option name="MAIN_CLASS_NAME" value="ph.edu.dlsu.enlistment.StudentTest" />
+      <option name="METHOD_NAME" value="change_section_room" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentTest.change_section_room_with_conflict" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="STSWENG-IT3.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ph.edu.dlsu.enlistment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ph.edu.dlsu.enlistment" />
+      <option name="MAIN_CLASS_NAME" value="ph.edu.dlsu.enlistment.StudentTest" />
+      <option name="METHOD_NAME" value="change_section_room_with_conflict" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentTest.enlist_more_than_24_units" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="STSWENG-IT3.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ph.edu.dlsu.enlistment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ph.edu.dlsu.enlistment" />
+      <option name="MAIN_CLASS_NAME" value="ph.edu.dlsu.enlistment.StudentTest" />
+      <option name="METHOD_NAME" value="enlist_more_than_24_units" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentTest.schedule_conflict_of_section_in_a_room" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="STSWENG-IT3.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ph.edu.dlsu.enlistment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ph.edu.dlsu.enlistment" />
+      <option name="MAIN_CLASS_NAME" value="ph.edu.dlsu.enlistment.StudentTest" />
+      <option name="METHOD_NAME" value="schedule_conflict_of_section_in_a_room" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.StudentTest.change_section_room_with_conflict" />
+        <item itemvalue="JUnit.StudentTest.change_section_room" />
+        <item itemvalue="JUnit.StudentTest.schedule_conflict_of_section_in_a_room" />
+        <item itemvalue="JUnit.StudentTest.enlist_more_than_24_units" />
+        <item itemvalue="Gradle.StudentTest.enlist_without_complete_subject_prerequisite_room_capacity_not_exceeded" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dcc64b47-39d5-48f5-adea-a4247ec170e4" name="Changes" comment="" />
+      <created>1728451018406</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728451018406</updated>
+    </task>
+    <servers />
+  </component>
+</project>

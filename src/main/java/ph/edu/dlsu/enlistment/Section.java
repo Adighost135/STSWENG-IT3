@@ -9,7 +9,7 @@ import java.util.Objects;
 class Section {
     private final String sectionId;
     private final Schedule schedule;
-    private final Room room;
+    private Room room;
     private final Subject subject;
     private int currEnlisted = 0;
 
@@ -25,6 +25,7 @@ class Section {
         this.schedule = schedule;
         this.room = room;
         this.subject = subject;
+        this.room.assignSection(this);
     }
 
     void checkConflict(Section other){
@@ -37,6 +38,15 @@ class Section {
             throw new SubjectConflictException("this section : " + this +
                     " and other section " + other +
                     " has the same subject at  " + subject);
+        }
+    }
+
+    public void changeRoom(Room newRoom) {
+        try{
+            newRoom.assignSection(this);
+            room = newRoom;
+        } catch (IllegalStateException e) {
+            throw new IllegalStateException(e);
         }
     }
 
@@ -80,8 +90,9 @@ class Section {
         return Objects.hashCode(sectionId);
     }
 
-
-
+    public Schedule getSchedule(){
+        return new Schedule(this.schedule.getDays(), this.schedule.getPeriod());
+    };
 
 
 

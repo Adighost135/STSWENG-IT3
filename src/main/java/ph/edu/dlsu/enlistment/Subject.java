@@ -15,8 +15,8 @@ class Subject {
 
     Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites, Programs degreeProgram){
         Objects.requireNonNull(subjectId);
-//        Objects.requireNonNull(units);
-//        Objects.requireNonNull(isLaboratory);
+        // Objects.requireNonNull(units);
+        // Objects.requireNonNull(isLaboratory);
         Validate.isTrue(isAlphanumeric(subjectId), "subjectId must be alphanumeric, was: " +subjectId);
         if (units < 0 || units > 4) {
             throw new IllegalStateException("Units can't be negative or above 4. was: " + units);
@@ -43,17 +43,6 @@ class Subject {
         }
     }
 
-
-//    void checkPrerequisites(Collection<Subject> takenSubjects) {
-//        for (Subject prerequisite : prerequisites) {
-//            if (!takenSubjects.contains(prerequisite)) {
-//                throw new IllegalArgumentException("Student has not yet taken the prerequisite of " +
-//                        "subject only taken subjects: " + takenSubjects + ". Required Prerequisite " +
-//                        "subject/s: " + prerequisites);
-//            }
-//        }
-//    }
-
     @Override
     public String toString() {
         return subjectId;
@@ -72,6 +61,9 @@ class Subject {
         return Objects.hash(subjectId);
     }
 
+
+    public float getUnits() {
+        return units;
 
     public boolean checkDegreeProgram(Programs program){
         return degreeProgram == program;

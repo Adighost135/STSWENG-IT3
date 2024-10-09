@@ -14,6 +14,14 @@ record Schedule(Days days, Period period) {
         // TF H0830, WS H1000
         return days + " " + period;
     }
+
+    public Days getDays() {
+        return days;
+    }
+
+    public Period getPeriod() {
+        return period;
+    }
 }
 
 enum Days {
