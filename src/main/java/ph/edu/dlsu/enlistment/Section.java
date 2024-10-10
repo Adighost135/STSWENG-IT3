@@ -91,7 +91,7 @@ class Section {
     }
 
     public Schedule getSchedule(){
-        return new Schedule(this.schedule.getDays(), this.schedule.getPeriodStart(), this.schedule.getPeriodEnd());
+        return new Schedule(schedule.days(), schedule.periodStart(), schedule.periodEnd());
     };
 
 

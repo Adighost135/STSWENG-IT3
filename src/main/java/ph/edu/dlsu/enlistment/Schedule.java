@@ -53,18 +53,6 @@ record Schedule(Days days, String periodStart, String periodEnd) {
         }
         return false;
     }
-
-    public Days getDays() {
-        return days;
-    }
-
-    public String getPeriodStart() {
-        return periodStart;
-    }
-
-    public String getPeriodEnd(){
-        return periodEnd;
-    }
 }
 
 enum Days {
