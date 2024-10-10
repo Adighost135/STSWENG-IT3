@@ -57,15 +57,6 @@ class Student {
         return new ArrayList<>(completedSubjects);
     }
 
-//    boolean studentAssessment() {
-//        // Validation if ever the student has literally no sections
-//        isTrue(sections.size() >= MIN_SECTIONS, "WARNING! Student must be enrolled in at least " + MIN_SECTIONS + " sections for assessment");
-//        //Validation if ever the student has reach the max sections
-//        isTrue(sections.size() <= MAX_SECTIONS, "WARNING! Student cannot be enrolled in more than " + MAX_SECTIONS + " sections");
-//        return true;
-//    }
-
-
     @Override
     public String toString(){
         return "Student# " + studentNo;

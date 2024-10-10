@@ -22,10 +22,10 @@ record Schedule(Days days, String periodStart, String periodEnd) {
             "Start of the period should not be the same or exceed the end of the period");
 
         if(Integer.parseInt(periodStart) < 830 || Integer.parseInt(periodStart) > 1730) throw new IllegalArgumentException(
-            "Start of the period should not be outside the bounds of 830 to 1730");
+            "Start of the period should not be outside the bounds of 0830 to 1730");
 
         if(Integer.parseInt(periodEnd) < 830 || Integer.parseInt(periodEnd) > 1730) throw new IllegalArgumentException(
-            "End of the period should not be outside the bounds of 830 to 1730");
+            "End of the period should not be outside the bounds of 0830 to 1730");
     }
 
     @Override
@@ -53,15 +53,8 @@ record Schedule(Days days, String periodStart, String periodEnd) {
         }
         return false;
     }
-
-    public Days getDays() {
-        return days;
-    }
-
-    public Period getPeriod() {
-        return period;
-    }
 }
+
 enum Days {
     MTH, TF, WS
 }
