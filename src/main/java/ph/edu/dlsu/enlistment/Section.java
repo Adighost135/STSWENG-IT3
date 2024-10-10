@@ -8,7 +8,7 @@ import java.util.Objects;
 
 class Section {
     private final String sectionId;
-    private final Schedule schedule;
+    final Schedule schedule;
     private Room room;
     private final Subject subject;
     private int currEnlisted = 0;
@@ -91,7 +91,7 @@ class Section {
     }
 
     public Schedule getSchedule(){
-        return new Schedule(this.schedule.getDays(), this.schedule.getPeriod());
+        return this.schedule;
     };
 
 
