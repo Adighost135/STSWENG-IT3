@@ -8,7 +8,7 @@ import java.util.Objects;
 
 class Section {
     private final String sectionId;
-    private final Schedule schedule;
+    final Schedule schedule;
     private Room room;
     private final Subject subject;
     private int currEnlisted = 0;
@@ -41,7 +41,7 @@ class Section {
         }
     }
 
-    void changeRoom(Room newRoom) {
+    public void changeRoom(Room newRoom) {
         try{
             newRoom.assignSection(this);
             room = newRoom;
@@ -50,11 +50,21 @@ class Section {
         }
     }
 
+//    void checkPrerequisites(Collection<Subject> takenSubjects){
+//        for (Subject prerequisite : prerequisites) {
+//            if (!takenSubjects.contains(prerequisite)) {
+//                throw new IllegalArgumentException("Student has not yet taken the prerequisite of " +
+//                        "subject only taken subjects: " + takenSubjects + ". Required Prerequisite " +
+//                        "subject/s: " + prerequisites);
+//            }
+//        }
+//    }
     Subject getSubject(){
         return subject;
     }
     void enlistStudent(){
         room.isVacant(currEnlisted);
+//        subject.checkPrerequisites(subject);
         currEnlisted += 1;
     }
 
@@ -81,8 +91,8 @@ class Section {
     }
 
     public Schedule getSchedule(){
-        return new Schedule(this.schedule.getDays(), this.schedule.getPeriod());
-    }
+        return new Schedule(schedule.days(), schedule.periodStart(), schedule.periodEnd());
+    };
 
 
 
