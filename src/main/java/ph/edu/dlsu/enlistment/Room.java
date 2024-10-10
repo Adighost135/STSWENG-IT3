@@ -34,7 +34,7 @@ class Room {
         Objects.requireNonNull(newSection, "Section cannot be null");
         // Check for schedule conflicts with already assigned sections
         for (Section existingSection : assignedSections) {
-            if (existingSection.schedule.equals(newSection.schedule)) {
+            if (existingSection.getSchedule().equals(newSection.getSchedule())) {
                 throw new IllegalStateException("Cannot assign section " + newSection + " to room " + roomName +
                         " as the schedule conflicts with section " + existingSection);
             }
