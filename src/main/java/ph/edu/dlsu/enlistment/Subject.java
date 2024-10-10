@@ -7,13 +7,13 @@ import java.util.*;
 
 class Subject {
     private final String subjectId;
-    private final float units;
+    private final int units;
     private final boolean isLaboratory;
     private final Collection<Subject> prerequisites = new HashSet<>();
     private final Programs degreeProgram;
 
 
-    Subject(String subjectId, float units, boolean isLaboratory, Collection<Subject> prerequisites, Programs degreeProgram){
+    Subject(String subjectId, int units, boolean isLaboratory, Collection<Subject> prerequisites, Programs degreeProgram){
         Objects.requireNonNull(subjectId);
         // Objects.requireNonNull(units);
         // Objects.requireNonNull(isLaboratory);
@@ -45,6 +45,18 @@ class Subject {
         }
     }
 
+    boolean checkDegreeProgram(Programs program){
+        return degreeProgram == program;
+    }
+
+    int getUnits() {
+        return units;
+    }
+
+    boolean isLaboratory(){
+        return isLaboratory;
+    }
+
     @Override
     public String toString() {
         return subjectId;
@@ -63,11 +75,4 @@ class Subject {
         return Objects.hash(subjectId);
     }
 
-
-    public float getUnits() {
-        return units;
-
-    public boolean checkDegreeProgram(Programs program){
-        return degreeProgram == program;
-    }
 }

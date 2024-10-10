@@ -6,11 +6,11 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static ph.edu.dlsu.enlistment.Days.*;
-import static ph.edu.dlsu.enlistment.Period.*;
+//import static ph.edu.dlsu.enlistment.Period.*;
 
 class StudentTest {
 
-    final static Schedule MTH_H0830 = new Schedule(MTH, H0830);
+    final static Schedule MTH_H0830 = new Schedule(MTH, "H0830", "H0900");
 
     static Student newStudent(){
         return new Student(1, Collections.emptyList(), Collections.emptyList(), Programs.BSCS);

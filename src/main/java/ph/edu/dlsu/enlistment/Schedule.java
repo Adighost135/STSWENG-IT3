@@ -34,6 +34,14 @@ record Schedule(Days days, String periodStart, String periodEnd) {
         return days + " " + periodStart + "-" + periodEnd;
     }
 
+    Days getDays() {
+        return days;
+    }
+
+    Period getPeriod() {
+        return period;
+    }
+
     @Override
     public final boolean equals(Object o){
         if(this == o)return true;
@@ -54,13 +62,7 @@ record Schedule(Days days, String periodStart, String periodEnd) {
         return false;
     }
 
-    public Days getDays() {
-        return days;
-    }
 
-    public Period getPeriod() {
-        return period;
-    }
 }
 enum Days {
     MTH, TF, WS
