@@ -3,6 +3,8 @@ package ph.edu.dlsu.enlistment;
 import org.apache.commons.lang3.*;
 import static org.apache.commons.lang3.StringUtils.*;
 
+import java.math.BigDecimal;
+
 import java.util.*;
 
 class Subject {
@@ -57,6 +59,15 @@ class Subject {
         return isLaboratory;
     }
 
+    BigDecimal getAssessment(){
+        BigDecimal labAssessment = (isLaboratory) ? new BigDecimal(1000) : new BigDecimal(0);
+        return BigDecimal.valueOf(units)
+                .multiply(BigDecimal.valueOf(2000))
+                .add(labAssessment)
+                .add(BigDecimal.valueOf(3000))
+                .multiply(BigDecimal.valueOf(1.12));
+    }
+
     @Override
     public String toString() {
         return subjectId;
@@ -74,5 +85,4 @@ class Subject {
     public int hashCode() {
         return Objects.hash(subjectId);
     }
-
 }
