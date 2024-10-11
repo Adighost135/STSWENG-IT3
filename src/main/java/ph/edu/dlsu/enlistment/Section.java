@@ -41,30 +41,19 @@ class Section {
         }
     }
 
-    public void changeRoom(Room newRoom) {
-        try{
-            newRoom.assignSection(this);
-            room = newRoom;
-        } catch (IllegalStateException e) {
-            throw new IllegalStateException(e);
-        }
+    void changeRoom(Room newRoom) {
+        Objects.requireNonNull(newRoom);
+        newRoom.assignSection(this);
+        room = newRoom;
+
     }
 
-//    void checkPrerequisites(Collection<Subject> takenSubjects){
-//        for (Subject prerequisite : prerequisites) {
-//            if (!takenSubjects.contains(prerequisite)) {
-//                throw new IllegalArgumentException("Student has not yet taken the prerequisite of " +
-//                        "subject only taken subjects: " + takenSubjects + ". Required Prerequisite " +
-//                        "subject/s: " + prerequisites);
-//            }
-//        }
-//    }
     Subject getSubject(){
         return subject;
     }
+
     void enlistStudent(){
         room.isVacant(currEnlisted);
-//        subject.checkPrerequisites(subject);
         currEnlisted += 1;
     }
 

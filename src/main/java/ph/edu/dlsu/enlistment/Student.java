@@ -20,7 +20,6 @@ class Student {
         Objects.requireNonNull(completedSubjects);
         this.studentNo = studentNo;
         this.sections.addAll(sections);
-
         this.completedSubjects.addAll(completedSubjects);
         this.degreeProgram = degreeProgram;
     }
@@ -34,7 +33,6 @@ class Student {
         }
         sections.forEach(currSection -> currSection.checkConflict(newSection));
         newSection.getSubject().checkPrerequisites(completedSubjects);
-
         newSection.enlistStudent(); // check the room capacity
         isTrue(newSection.getSubject().checkDegreeProgram(degreeProgram), "cannot enlist in section outside degree program: " + newSection.toString());
         sections.add(newSection);

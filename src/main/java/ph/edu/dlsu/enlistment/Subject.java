@@ -14,11 +14,8 @@ class Subject {
     private final Collection<Subject> prerequisites = new HashSet<>();
     private final Programs degreeProgram;
 
-
     Subject(String subjectId, int units, boolean isLaboratory, Collection<Subject> prerequisites, Programs degreeProgram){
         Objects.requireNonNull(subjectId);
-        // Objects.requireNonNull(units);
-        // Objects.requireNonNull(isLaboratory);
         Validate.isTrue(isAlphanumeric(subjectId), "subjectId must be alphanumeric, was: " +subjectId);
         if (units < 0 || units > 4) {
             throw new IllegalStateException("Units can't be negative or above 4. was: " + units);
@@ -65,8 +62,6 @@ class Subject {
                 .multiply(BigDecimal.valueOf(2000))
                 .add(labAssessment);
     }
-
-
 
     @Override
     public String toString() {
