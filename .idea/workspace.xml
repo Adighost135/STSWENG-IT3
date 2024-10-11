@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc64b47-39d5-48f5-adea-a4247ec170e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Section.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ph/edu/dlsu/enlistment/Subject.java" afterDir="false" />
     </list>
@@ -42,21 +45,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "NatsokoMiruku"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NatsokoMiruku&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Adighost135/STSWENG-IT3.git&quot;,
     &quot;accountId&quot;: &quot;f0a8a75f-d646-4a7d-aa19-2b5b8c816b2a&quot;
   }
 }</component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2nBehgddbpMYu0KE7pOL31ttPhb" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -78,6 +81,8 @@
     "JUnit.StudentTest.executor": "Run",
     "JUnit.StudentTest.schedule_conflict_of_section_in_a_room.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Student-Assessment-Branch",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
