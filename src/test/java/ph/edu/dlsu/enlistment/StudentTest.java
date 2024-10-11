@@ -2,6 +2,7 @@ package ph.edu.dlsu.enlistment;
 
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,14 +14,14 @@ class StudentTest {
     final static Schedule MTH_0830_0900 = new Schedule(MTH, "0830", "0900");
 
     static Student newStudent(){
-        return new Student(1, Collections.emptyList(), Collections.emptyList(), Programs.BSCS);
+        return new Student(1, Collections.emptyList(), Collections.emptyList(), BSCS);
     }
 
-    final static Subject MTH101 = new Subject("MTH101", 3, false, Arrays.asList(), Programs.BSCS);
-    final static Subject PHYSICS = new Subject("PHYSICS", 3, true, Arrays.asList(MTH101), Programs.BSEC);
-    final static Subject CSSWENG = new Subject("CSSWENG", 3, false, Arrays.asList(), Programs.BSCS);
-    final static Subject STSWENG = new Subject("STSWENG", 3, false, Arrays.asList(CSSWENG), Programs.BSCS);
-    final static Subject LBYARCH = new Subject("LBYARCH", 1, true, Arrays.asList(), Programs.BSCS);
+    final static Subject MTH101 = new Subject("MTH101", 3, false, Arrays.asList(), BSCS);
+    final static Subject PHYSICS = new Subject("PHYSICS", 3, true, Arrays.asList(MTH101), BSEC);
+    final static Subject CSSWENG = new Subject("CSSWENG", 3, false, Arrays.asList(), BSCS);
+    final static Subject STSWENG = new Subject("STSWENG", 3, false, Arrays.asList(CSSWENG), BSCS);
+    final static Subject LBYARCH = new Subject("LBYARCH", 1, true, Arrays.asList(), BSCS);
 
     static Subject[] completedSubjects = new Subject[]{MTH101, PHYSICS, CSSWENG, LBYARCH};
 
@@ -334,7 +335,7 @@ class StudentTest {
     @Test
     void taking_subject_outside_degree_program(){
         // Given a student with no enlistment, with completed subjects, and degree program is BSCS
-        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects), Programs.BSCS);
+        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(completedSubjects), BSCS);
 
         // Given a room with room name and capacity is 2
         Room room = new Room("Room1", 2);
@@ -350,6 +351,35 @@ class StudentTest {
         } catch (IllegalArgumentException ex) {
             assertEquals("cannot enlist in section outside degree program: A", ex.getMessage());
         }
+    }
+
+    @Test
+    void view_student_assessment(){
+        // Given a student with completed subjects but no current enlisted sections yet and degree program is BSEC
+        Student student1 = new Student(1, Collections.emptyList(), Arrays.asList(PHYSICS), BSEC);
+
+        // Given a room capacity normal
+        Room room = new Room("Room1", 1);
+
+        // Given a schedule
+        Schedule MTH_1630_1730 = new Schedule(MTH, "1630", "1730");
+        Schedule TF_0830_0930 = new Schedule(TF, "0830", "0930");
+
+        // Given a subject with a prerequisite
+        Subject subject1 = new Subject("ADVPHYSICS", 3, false, List.of(PHYSICS), BSEC);
+        Subject subject2 = new Subject("LBADVPHYSICS", 1, true, List.of(PHYSICS), BSEC);
+        Subject subject3 = new Subject("THERMODYNAMICS", 3, true, List.of(PHYSICS), BSEC);
+
+        // Given a section with a subject that has a prerequisite
+        Section section1 = new Section("A", MTH_0830_0900, room, subject1);
+        Section section2 = new Section("B", MTH_1630_1730, room, subject2);
+        Section section3 = new Section("C", TF_0830_0930, room, subject3);
+
+        // When student enlist with no prerequisite subject,
+        BigDecimal student_assessment = ;
+
+        // Then an exception is thrown
+        assertEquals(1, student_assessment.size());
     }
 
 }
