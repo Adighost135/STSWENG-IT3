@@ -63,9 +63,7 @@ class Subject {
         BigDecimal labAssessment = (isLaboratory) ? new BigDecimal(1000) : new BigDecimal(0);
         return BigDecimal.valueOf(units)
                 .multiply(BigDecimal.valueOf(2000))
-                .add(labAssessment)
-                .add(BigDecimal.valueOf(3000))
-                .multiply(BigDecimal.valueOf(1.12));
+                .add(labAssessment);
     }
 
 
