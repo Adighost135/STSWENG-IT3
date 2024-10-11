@@ -43,7 +43,6 @@ class RoomTest {
 
         // When: Assigning both sections to the room
         room.assignSection(section1);
-        room.assignSection(section3);
 
         // Then: A conflict should occur and throw ScheduleConflictException
         Exception exception = assertThrows(ScheduleConflictException.class, () -> room.assignSection(section3));
