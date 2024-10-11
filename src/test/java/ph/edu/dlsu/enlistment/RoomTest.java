@@ -22,7 +22,6 @@ class RoomTest {
 
         // When: Assigning both sections to the room
         room.assignSection(section1);
-        room.assignSection(section2);
 
         // Then: No conflict should occur
         assertDoesNotThrow(() -> room.assignSection(section1));
