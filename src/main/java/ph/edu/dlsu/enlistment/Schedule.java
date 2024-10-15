@@ -1,48 +1,34 @@
 package ph.edu.dlsu.enlistment;
 
 import java.util.*;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.commons.lang3.Validate;
 
-record Schedule(Days days, String periodStart, String periodEnd) {
+record Schedule(Days days, int timeStart, int timeEnd) {
 
     Schedule{
         Objects.requireNonNull(days);
-        Objects.requireNonNull(periodStart);
-        Objects.requireNonNull(periodEnd);
-        Validate.isTrue(NumberUtils.isDigits(periodStart), "Period Start must be numeric, was: " + periodStart);
-        Validate.isTrue(NumberUtils.isDigits(periodEnd), "Period End must be numeric, was: " + periodEnd);
-        if(Integer.parseInt(periodStart) % 100 != 0 && Integer.parseInt(periodStart) % 100 != 30) throw new IllegalArgumentException(
-                "Period does not start at the top or bottom of each hour, was" + periodStart);
+        Objects.requireNonNull(timeStart);
+        Objects.requireNonNull(timeEnd);
+        if(timeStart % 100 != 0 && timeStart % 100 != 30) throw new IllegalArgumentException(
+                "Period does not start at the top or bottom of each hour, was" + timeStart);
 
-        if(Integer.parseInt(periodEnd) % 100 != 0 && Integer.parseInt(periodEnd) % 100 != 30) throw new IllegalArgumentException(
-                "Period does not end at the top or bottom of each hour, was" + periodEnd );
+        if(timeEnd % 100 != 0 && timeEnd % 100 != 30) throw new IllegalArgumentException(
+                "Period does not end at the top or bottom of each hour, was" + timeEnd );
 
-        if(Integer.parseInt(periodStart) >= Integer.parseInt(periodEnd)) throw new IllegalArgumentException(
+        if(timeStart >= timeEnd) throw new IllegalArgumentException(
             "Start of the period should not be the same or exceed the end of the period");
 
-        if(Integer.parseInt(periodStart) < 830 || Integer.parseInt(periodStart) > 1730) throw new IllegalArgumentException(
+        if(timeStart < 830 || timeStart > 1730) throw new IllegalArgumentException(
             "Start of the period should not be outside the bounds of 0830 to 1730");
 
-        if(Integer.parseInt(periodEnd) < 830 || Integer.parseInt(periodEnd) > 1730) throw new IllegalArgumentException(
+        if(timeEnd < 830 || timeEnd > 1730) throw new IllegalArgumentException(
             "End of the period should not be outside the bounds of 0830 to 1730");
     }
 
-    @Override
-    public String toString(){
-        // TF H0830, WS H1000
-        return days + " " + periodStart + "-" + periodEnd;
-    }
-
-    @Override
-    public final boolean equals(Object o){
-        if(this == o)return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Schedule schedule = (Schedule) o;
-        int thisStart = Integer.parseInt(this.periodStart);
-        int thisEnd = Integer.parseInt(this.periodEnd);
-        int otherStart = Integer.parseInt(schedule.periodStart);
-        int otherEnd = Integer.parseInt(schedule.periodEnd);
+    public boolean isOverlap(Schedule schedule){
+        int thisStart = this.timeStart;
+        int thisEnd = this.timeEnd;
+        int otherStart = schedule.timeStart;
+        int otherEnd = schedule.timeEnd;
         if (this.days == schedule.days){
             if(thisStart < otherEnd && thisEnd > otherStart){
                 return true;
@@ -52,6 +38,29 @@ record Schedule(Days days, String periodStart, String periodEnd) {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString(){
+        // TF H0830, WS H1000
+        return days + ": " + timeStart + "-" + timeEnd;
+    }
+
+    @Override
+    public final boolean equals(Object o){
+        if(this == o)return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Schedule that = (Schedule) o;
+        if (this.days == that.days){
+            if(this.timeStart != that.timeStart) return false;
+            return this.timeEnd == that.timeEnd;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return (int) days.hashCode() * timeStart * timeEnd;
     }
 }
 
