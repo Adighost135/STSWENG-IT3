@@ -41,7 +41,7 @@ class Section {
         }
     }
 
-    public void changeRoom(Room newRoom) {
+    void changeRoom(Room newRoom) {
         try{
             newRoom.assignSection(this);
             room = newRoom;
@@ -50,15 +50,11 @@ class Section {
         }
     }
 
-//    void checkPrerequisites(Collection<Subject> takenSubjects){
-//        for (Subject prerequisite : prerequisites) {
-//            if (!takenSubjects.contains(prerequisite)) {
-//                throw new IllegalArgumentException("Student has not yet taken the prerequisite of " +
-//                        "subject only taken subjects: " + takenSubjects + ". Required Prerequisite " +
-//                        "subject/s: " + prerequisites);
-//            }
-//        }
-//    }
+
+    Schedule getSchedule(){
+        return new Schedule(schedule.days(), schedule.periodStart(), schedule.periodEnd());
+    };
+
     Subject getSubject(){
         return subject;
     }
@@ -89,11 +85,4 @@ class Section {
     public int hashCode() {
         return Objects.hashCode(sectionId);
     }
-
-    public Schedule getSchedule(){
-        return new Schedule(schedule.days(), schedule.periodStart(), schedule.periodEnd());
-    };
-
-
-
 }

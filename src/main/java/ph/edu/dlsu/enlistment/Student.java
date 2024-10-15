@@ -72,6 +72,7 @@ class Student {
             {
                 TotalAssessment = TotalAssessment.add(section.getSubject().getAssessment());
             }
+            TotalAssessment = TotalAssessment.add(BigDecimal.valueOf(3000)).multiply(BigDecimal.valueOf(1.12));
             return TotalAssessment;
         }
 
